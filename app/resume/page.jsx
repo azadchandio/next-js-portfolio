@@ -7,13 +7,13 @@ import {
   FaFigma,
   FaNodeJs,
 } from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import { SiTailwindcss, SiNextdotjs,SiDjango} from "react-icons/si";
 
 // about data
 const about = {
   title: "About me",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae maiores dolorem nam aliquid veritatis nesciunt quia recusandae.",
+    "I'm Azad Chandio, a full-stack developer with expertise in React, Django, and MySQL. I've built projects ranging from portfolio websites to an advanced classifieds platform called Auole. I'm passionate about creating user-friendly, functional web applications and continuously learning new technologies to enhance my skills",
   info: [
     {
       fieldNmae: "Name",
@@ -25,7 +25,7 @@ const about = {
     },
     {
       fieldNmae: "Experience",
-      fieldValue: "12+ Years",
+      fieldValue: "2+ Years",
     },
     {
       fieldNmae: "Skype",
@@ -37,7 +37,7 @@ const about = {
     },
     {
       fieldNmae: "Email",
-      fieldValue: "azadchandio@gmail.com",
+      fieldValue: "azad@azadchandio.com",
     },
     {
       fieldNmae: "Freelance",
@@ -54,38 +54,27 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My experience",
   discription:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus sunt dolorum quidem? Veritatis obcaecati expedita facilis blanditiis.",
-
+    "I am a full-stack developer with experience in building classifieds and e-commerce platforms using React, Django, and MySQL.",
   items: [
     {
-      company: "Tech Solutions Inc",
+      company: "Skynet Innovate",
       position: "Full Stack Developer",
-      duration: "2022-present",
+      duration: "2025-present",
     },
     {
-      company: "Web Design Studio",
+      company: "Lofty Soft (PVT LTD)",
       position: "Front-End Developer Intern",
-      duration: "Summer 2021",
+      duration: "Summer 2024",
     },
     {
-      company: "E-commerce Startup",
-      position: "Freelance Web developer",
-      duration: "2020-2021",
+      company: "Liftup Ai",
+      position: "Jr Front Developer",
+      duration: "2023-5 2024",
     },
     {
-      company: "Tech Academy",
-      position: "Teaching Assistant",
-      duration: "2019-2020",
-    },
-    {
-      company: "Digital Agency",
-      position: "UI/UX Designer",
-      duration: "2018-2019",
-    },
-    {
-      company: "Software Development Firm",
-      position: "Junior Developer",
-      duration: "2017-2018",
+      company: "Raptr42",
+      position: "Front End developer",
+      duration: "2023-1 2023-5",
     },
   ],
 };
@@ -94,38 +83,28 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "My education",
   discription:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus sunt dolorum quidem? Veritatis obcaecati expedita facilis blanditiis.",
+    "Bachelor of Science in Software Engineering (BS SWE) University of Sindh, Jamshoro Graduated in 2025",
 
   items: [
     {
-      instituation: "Online course platform",
-      degree: "Full Stack web Development Bootcamp",
-      duration: "2023",
+      instituation: "University Of Sindh",
+      degree: "BS in Software Engineering",
+      duration: "2021 - 2025",
     },
     {
-      instituation: "Codeacademy",
-      degree: "Front-End Track",
-      duration: "2023",
+      instituation: "codewithmosh",
+      degree: "Django Backend",
+      duration: "2024",
     },
     {
-      instituation: "Online Course",
-      degree: "Programming Course",
-      duration: "2020-2021",
+      instituation: "Coursera",
+      degree: "Front End Development",
+      duration: "2022-2023",
     },
     {
-      instituation: "Tech Institute",
-      degree: "Certified Web Developer",
-      duration: "2020-2021",
-    },
-    {
-      instituation: "Design School",
-      degree: "Diploma in Graphic Design",
-      duration: "2016-2018",
-    },
-    {
-      instituation: "Community College",
-      degree: "Associate Degree In Computer Science",
-      duration: "2020-2025",
+      instituation: "Navttc",
+      degree: "Front End Development Course",
+      duration: "2021-2022",
     },
   ],
 };
@@ -133,7 +112,7 @@ const education = {
 const skills = {
   title: "My skills",
   discription:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus sunt dolorum quidem? Veritatis obcaecati expedita facilis blanditiis.",
+  "Frontend Development, Backend Development, Database Management, Version Control",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -164,8 +143,8 @@ const skills = {
       name: "tailwind.css",
     },
     {
-      icon: <FaNodeJs />,
-      name: "node.js",
+      icon: <SiDjango />,
+      name: "Django",
     },
   ],
 };
@@ -203,16 +182,16 @@ const Resume = () => {
           </TabsList>
 
           {/* {content} */}
-          <div className="min-h-[70vh] w-full">
+          <div className="min-h-[80vh] w-full">
             {/* experience */}
             <TabsContent value="experience" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
+              <div className="flex flex-col gap-[20px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {experience.discription}
                 </p>
                 <ScrollArea className="h-[400px]">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[20px]">
                     {experience.items.map((item, index) => {
                       return (
                         <li
@@ -237,13 +216,13 @@ const Resume = () => {
             </TabsContent>
             {/* education */}
             <TabsContent value="education" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
+              <div className="flex flex-col gap-[20px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {education.discription}
                 </p>
                 <ScrollArea className="h-[400px]">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[20px]">
                     {education.items.map((item, index) => {
                       return (
                         <li
@@ -268,14 +247,14 @@ const Resume = () => {
             </TabsContent>
             {/* skills */}
             <TabsContent value="skills" className="w-full h-full">
-              <div className="flex flex-col gap-[30px]">
-                <div className="flex flex-col gap-[30px] text-center xl:text-left">
+              <div className="flex flex-col gap-[20px]">
+                <div className="flex flex-col gap-[20px] text-center xl:text-left">
                   <h3 className="text-4xl font-bold">{skills.title}</h3>
                   <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                     {skills.discription}
                   </p>
                 </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[20px]">
                   {skills.skillList.map((skill, index) => {
                     return (
                       <li key={index}>
@@ -302,7 +281,7 @@ const Resume = () => {
               value="about"
               className="w-full text-center xl:text-left"
             >
-              <div className="flex flex-col gap-[30px]">
+              <div className="flex flex-col gap-[20px]">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {about.description}

@@ -8,27 +8,27 @@ const services = [
   {
     num: "01",
     title: "Web Development",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
+    description: "Building fast, responsive, and user-friendly websites using React, Django, and MySQL. Whether it's a business site, e-commerce store, or custom web app, I create solutions that look great and perform well. Let’s bring your idea to life!",
     href:"",
   },
-  {
-    num: "02",
-    title: "UI/UX Design",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
-    href:"",
-  },
-  {
-    num: "03",
-    title: "Logo Design",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
-    href:"",
-  },
-  {
-    num: "04",
-    title: "SEO",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
-    href:"",
-  },
+  // {
+  //   num: "02",
+  //   title: "UI/UX Design",
+  //   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
+  //   href:"",
+  // },
+  // {
+  //   num: "03",
+  //   title: "Logo Design",
+  //   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
+  //   href:"",
+  // },
+  // {
+  //   num: "04",
+  //   title: "SEO",
+  //   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
+  //   href:"",
+  // },
 ];
 
 

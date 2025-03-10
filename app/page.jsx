@@ -17,8 +17,7 @@ const Home = () => {
               hello I'm <br /> <span className="text-accent">Azad Chandio</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I excel at crafting elegant digital experience and i am proficent
-              in various programming languges and technologies.
+            Full Stack Developer skilled in React, Django, and MySQL. Passionate about building scalable web applications with a focus on performance and user experience. Always eager to learn and take on new challenges
             </p>
             {/* button $ socials  */}
             <div className="flex flex-col xl:flex-row items-center gap-8">

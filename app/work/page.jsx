@@ -22,12 +22,12 @@ const projects = [
   {
     num: "01",
     category: "frontend",
-    title: "project 1",
+    title: "Auole",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni autem illum dolor, quisquam exercitationem iste?",
     stack: [{ name: "Html 5" }, { name: "Css 3" }, { name: "Javascript" }],
-    image: "/assets/work/thumb1.png",
-    live: "",
+    image: "/assets/work/auoleee.png",
+    live: "https://auolee.vercel.app/",
     github: "",
   },
   {
@@ -37,7 +37,7 @@ const projects = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni autem illum dolor, quisquam exercitationem iste?",
     stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Node.js" }],
-    image: "/assets/work/thumb2.png",
+    image: "/assets/work/newpro.png",
     live: "",
     github: "",
   },
@@ -102,7 +102,7 @@ const Work = () => {
               {/* {buttons} */}
               <div className="flex items-center gap-4">
                 {/* {Live project button} */}
-                <Link href={project.live}>
+                <Link href={project.live} target="_blank">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group ">
@@ -148,7 +148,7 @@ const Work = () => {
                         <Image
                           src={project.image}
                           fill
-                          className="object-cover"
+                          className="object-fit"
                           alt=""
                         />
                       </div>

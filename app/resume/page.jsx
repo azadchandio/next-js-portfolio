@@ -172,7 +172,7 @@ const Resume = () => {
       <div className="container mx-auto">
         <Tabs
           defaultValue="experience"
-          className="flex flex-col xl:flex-row gap-[60px]"
+          className="flex flex-col xl:flex-row gap-[60px] ml-[-15px]"
         >
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 ">
             <TabsTrigger value="experience">Experience</TabsTrigger>

@@ -22,36 +22,36 @@ const projects = [
   {
     num: "01",
     category: "frontend",
+    title: "chodesync",
+    description:
+      "Next js project for a Ai company",
+    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
+    image: "/assets/work/purple.png",
+    live: "https://chodesync-sa-main.vercel.app/",
+    github: "",
+  },
+    {num: "02",
+    category: "fullstack",
     title: "Auole",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni autem illum dolor, quisquam exercitationem iste?",
-    stack: [{ name: "Html 5" }, { name: "Css 3" }, { name: "Javascript" }],
+      "Auole is a modern classifieds website designed for users in Pakistan to easily buy, sell, and trade a variety of items, including electronics, vehicles, property, and more. With user-friendly features like secure user profiles, ad posting, and categorized listings, Auole offers a reliable platform for seamless online trading.",
+    stack: [{ name: "React" }, { name: "Django" }, { name: "MySql" }],
     image: "/assets/work/auoleee.png",
     live: "https://auolee.vercel.app/",
     github: "",
   },
   {
-    num: "02",
-    category: "fullstack",
-    title: "project 2",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni autem illum dolor, quisquam exercitationem iste?",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Node.js" }],
-    image: "/assets/work/newpro.png",
-    live: "",
-    github: "",
-  },
-  {
     num: "03",
-    category: "fullstack",
-    title: "project 3",
+    category: "frontend",
+    title: "Soy Clara",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni autem illum dolor, quisquam exercitationem iste?",
+      "Beautifull Static Website for Client",
     stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
-    image: "/assets/work/thumb3.png",
-    live: "",
+    image: "/assets/work/newpro.png",
+    live: "https://newpro-main.vercel.app/",
     github: "",
   },
+  
 ];
 
 const Work = () => {
@@ -82,7 +82,7 @@ const Work = () => {
               </div>
               {/* {} */}
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} project{" "}
+                {project.category} project {project.title}
               </h2>
               {/* {project description} */}
               <p className="text-white/60">{project.description}</p>

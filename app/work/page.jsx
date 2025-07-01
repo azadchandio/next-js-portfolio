@@ -1,13 +1,11 @@
-"use client";
+'use client';
 
-import { animate, motion } from "framer-motion";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { supabase, checkSupabaseConnection } from "@/lib/supabaseClient";
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
-
 import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-
 import {
   Tooltip,
   TooltipContent,
@@ -18,51 +16,44 @@ import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
 
-const projects = [
-  {
-    num: "01",
-    category: "frontend",
-    title: "chodesync",
-    description:
-      "Next js project for a Ai company",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
-    image: "/assets/work/purple.png",
-    live: "https://chodesync-sa-main.vercel.app/",
-    github: "",
-  },
-    {num: "02",
-    category: "fullstack",
-    title: "Auole",
-    description:
-      "Auole is a modern classifieds website designed for users in Pakistan to easily buy, sell, and trade a variety of items, including electronics, vehicles, property, and more. With user-friendly features like secure user profiles, ad posting, and categorized listings, Auole offers a reliable platform for seamless online trading.",
-    stack: [{ name: "React" }, { name: "Django" }, { name: "MySql" }],
-    image: "/assets/work/auoleee.png",
-    live: "https://auolee.vercel.app/",
-    github: "",
-  },
-  {
-    num: "03",
-    category: "frontend",
-    title: "Soy Clara",
-    description:
-      "Beautifull Static Website for Client",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
-    image: "/assets/work/newpro.png",
-    live: "https://newpro-main.vercel.app/",
-    github: "",
-  },
-  
-];
-
 const Work = () => {
-  const [project, setProject] = useState(projects[0]);
+  const [projects, setProjects] = useState([]);
+  const [project, setProject] = useState(null);
+  const [dbError, setDbError] = useState(null);
+
+  useEffect(() => {
+    // Check DB connectivity on mount
+    checkSupabaseConnection().then((ok) => {
+      if (!ok) setDbError('Could not connect to Supabase database.');
+    });
+
+    async function fetchProjects() {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .order("num", { ascending: true });
+
+      console.log("Supabase response:", { data, error });
+
+      if (error) {
+        setDbError(error.message);
+        console.error("Supabase error:", error.message);
+      } else {
+        setProjects(data || []);
+        setProject((data && data[0]) || null);
+      }
+    }
+    fetchProjects();
+  }, []);
 
   const handleSlideChange = (swiper) => {
-    // get current slide index
     const currentIndex = swiper.activeIndex;
-    // update project state based on current slide index
     setProject(projects[currentIndex]);
   };
+
+  if (dbError) return <div className="text-red-500">{dbError}</div>;
+  if (!project) return <div className="text-white">Loading...</div>;
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -76,57 +67,51 @@ const Work = () => {
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">
-              {/* {outline num} */}
               <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
-                {project.num}
+                {project.num || "N/A"}
               </div>
-              {/* {} */}
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} project {project.title}
+                {project.category ? `${project.category} project` : ""} {project.title || ""}
               </h2>
-              {/* {project description} */}
-              <p className="text-white/60">{project.description}</p>
-              {/* {stack} */}
+              <p className="text-white/60">{project.description || ""}</p>
               <ul className="flex gap-4">
-                {project.stack.map((item, index) => {
-                  return (
-                    <li key={index} className="text-xl text-accent">
-                      {item.name}
-                      {index !== project.stack.length - 1 && ","}
-                    </li>
-                  );
-                })}
+                {(Array.isArray(project.stack) ? project.stack : []).map((item, index) => (
+                  <li key={index} className="text-xl text-accent">
+                    {item}
+                    {index !== project.stack.length - 1 && ","}
+                  </li>
+                ))}
               </ul>
-              {/* border */}
               <div className="border border-white/20 "></div>
-              {/* {buttons} */}
               <div className="flex items-center gap-4">
-                {/* {Live project button} */}
-                <Link href={project.live} target="_blank">
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group ">
-                        <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                {/* {github project button} */}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group ">
-                        <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github repository</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
+                {project.live && (
+                  <Link href={project.live} target="_blank">
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group ">
+                          <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Live project</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
+                {project.github && (
+                  <Link href={project.github}>
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group ">
+                          <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Github repository</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -137,29 +122,28 @@ const Work = () => {
               className="xl:h-[520px] mb-12"
               onSlideChange={handleSlideChange}
             >
-              {projects.map((project, index) => {
-                return (
-                  <SwiperSlide key={index} className="w-full">
-                    <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                      {/* {overlay} */}
-                      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-                      {/* {image} */}
-                      <div className="relative w-full h-full">
+              {projects.map((project, index) => (
+                <SwiperSlide key={index} className="w-full">
+                  <div className="h-[279px] relative group flex justify-center items-center bg-pink-50/20">
+                    <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+                    <div className="relative w-full h-full">
+                      {project.image && (
                         <Image
-                          src={project.image}
-                          fill
-                          className="object-fit"
-                          alt=""
-                        />
-                      </div>
+                        src={project.image}
+                        alt={project.title || 'Project image'}
+                        width={600}
+                        height={600}
+                        className="object-contain "
+                      />
+                      )}
                     </div>
-                  </SwiperSlide>
-                );
-              })}
-              {/* {slider buttons} */}
-              <WorkSliderBtns containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-              btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px]
-              h-[44px] flex justify-center items-center transition-all "/>
+                  </div>
+                </SwiperSlide>
+              ))}
+              <WorkSliderBtns
+                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
+                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+              />
             </Swiper>
           </div>
         </div>

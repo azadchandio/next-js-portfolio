@@ -2,12 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{js,jsx,ts,tsx}',
   ],
-  prefix: "",
   theme: {
     container: {
       center: true,
@@ -23,14 +22,18 @@ module.exports = {
       primary: "var(--font-jetbrainsMono)",
     },
     extend: {
-      colors:{
-        primary:'#1c1c22',
-        accent:{
-          DEFAULT:'#00ff99',
-          hover:'#00e187'
+      colors: {
+        primary: '#1c1c22',
+        accent: {
+          DEFAULT: '#00ff99',
+          hover: '#00e187',
         },
       },
       keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0, transform: 'translateY(20px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -41,10 +44,13 @@ module.exports = {
         },
       },
       animation: {
+        'fade-in': 'fadeIn 1s ease-out',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [
+    require("tailwindcss-animate"),
+  ],
+};

@@ -22,7 +22,7 @@ const FloatingVideo = () => {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 w-40 h-60 overflow-hidden shadow-lg border border-gray-600 bg-black group">
+    <div className="w-full h-full overflow-hidden shadow-lg border border-gray-600 bg-black group rounded-md">
       <div className="relative w-full h-full">
         <video
           ref={videoRef}
@@ -30,11 +30,11 @@ const FloatingVideo = () => {
           loop
           playsInline
         >
-          <source src="/screen-capture.mp4" type="video/mp4" />
+          <source src="/testingg.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
-        {/* Show play button only when not playing */}
+        {/* Play button */}
         {!isPlaying && (
           <button
             onClick={handlePlay}
@@ -44,7 +44,7 @@ const FloatingVideo = () => {
           </button>
         )}
 
-        {/* Show pause button only when playing and hovered */}
+        {/* Pause button on hover */}
         {isPlaying && (
           <button
             onClick={handlePause}

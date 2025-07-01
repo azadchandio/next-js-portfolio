@@ -83,6 +83,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('🟢 Starting form submission');
     
     if (!validateForm()) {
       toast.error('Please fill in all required fields');
@@ -97,8 +98,15 @@ const Contact = () => {
         },
         body: JSON.stringify(formData),
       });
-
+      
+      console.log('📨 Response received:', response.status);
+      
+      const data = await response.json();
+      console.log('📝 Response data:', data);
+      
       if (response.ok) {
+        toast.success('Message sent successfully!');
+        // Reset form
         setFormData({
           firstname: '',
           lastname: '',
@@ -107,11 +115,12 @@ const Contact = () => {
           service: '',
           message: ''
         });
-        toast.success('Message sent successfully!');
+      } else {
+        throw new Error(data.details || 'Failed to send message');
       }
     } catch (error) {
-      console.error('Error sending message:', error);
-      toast.error('Failed to send message. Please try again.');
+      console.error('❌ Error submitting form:', error);
+      toast.error(error.message || 'Failed to send message. Please try again.');
     }
   };
 

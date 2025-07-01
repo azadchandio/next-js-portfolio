@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 // components
@@ -6,6 +5,7 @@ import Photo from "@/components/Photo";
 import Social from "@/components/Social";
 import Stats from "@/components/Stats";
 import FloatingVideo from "@/components/FloatingVideo"; //
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -21,8 +21,8 @@ const Home = () => {
             <p className="max-w-[500px] mb-9 text-white/80">
               Full Stack Developer skilled in React, Django, and MySQL.
               Passionate about building scalable web applications with a focus
-              on performance and user experience. Always eager to learn and
-              take on new challenges
+              on performance and user experience. Always eager to learn and take
+              on new challenges
             </p>
             {/* button & socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
@@ -31,8 +31,16 @@ const Home = () => {
                 size="lg"
                 className="uppercase flex items-center gap-2 hover:bg-accent hover:text-primary hover:transition-all duration-500"
               >
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
+                <Link
+                  href="/Azad-Chandio-CV.pdf"
+                  target="_blank"
+                  download
+                >
+                  <div className="flex justify-center items-center gap-2">
+                  <span>Download CV</span>
+                  <FiDownload className="text-xl" />
+                  </div>
+                </Link>
               </Button>
               <div className="mb-8 xl:mb-0">
                 <Social

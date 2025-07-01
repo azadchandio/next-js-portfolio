@@ -223,9 +223,9 @@ const Contact = () => {
                   <SelectContent>
                     <SelectGroup>
                       <SelectLabel>Select a service</SelectLabel>
-                      <SelectItem value="Web Development">Web Development</SelectItem>
-                      <SelectItem value="App Development">App Development</SelectItem>
-                      <SelectItem value="UI/UX">UI/UX Design</SelectItem>
+                      <SelectItem value="Full Stack Development">Full Stack Development</SelectItem>
+                      <SelectItem value="Frontend Development">Frontend Development</SelectItem>
+                      <SelectItem value="Backend Development">Backend Development</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>

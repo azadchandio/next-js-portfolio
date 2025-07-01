@@ -5,31 +5,34 @@ import Link from "next/link";
 import { BsArrowDownRight } from "react-icons/bs";
 
 const services = [
+  // Full Stack
   {
     num: "01",
-    title: "Web Development",
-    description: "Building fast, responsive, and user-friendly websites using React, Django, and MySQL. Whether it's a business site, e-commerce store, or custom web app, I create solutions that look great and perform well. Let’s bring your idea to life!",
-    href:"",
+    title: "Full Stack Development",
+    description:
+      "Complete web solutions using React, Django, and MySQL. I handle both frontend and backend to build fully functional, scalable, and maintainable applications.",
+    href: "/contact",
   },
-  // {
-  //   num: "02",
-  //   title: "UI/UX Design",
-  //   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
-  //   href:"",
-  // },
-  // {
-  //   num: "03",
-  //   title: "Logo Design",
-  //   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
-  //   href:"",
-  // },
-  // {
-  //   num: "04",
-  //   title: "SEO",
-  //   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, et.",
-  //   href:"",
-  // },
+
+  // Frontend
+  {
+    num: "02",
+    title: "Frontend Development",
+    description:
+      "Responsive, modern UI using React.js, Next.js, and Tailwind CSS. I focus on performance, accessibility, and smooth user experience.",
+    href: "/contact",
+  },
+
+  // Backend
+  {
+    num: "03",
+    title: "Backend Development",
+    description:
+      "Powerful and secure backend using Django, Django Rest Framework, and MySQL. I build robust APIs and handle authentication, databases, and admin panels.",
+    href: "/contact",
+  },
 ];
+
 
 
 
@@ -67,6 +70,7 @@ const Services = () => {
           })}
         </motion.div>
       </div>
+      
     </section>
   )
 };

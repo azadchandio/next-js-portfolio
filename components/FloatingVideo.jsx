@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useRef } from "react";
-import { X, Play } from "lucide-react";
+import { Play, Pause } from "lucide-react";
 
 const FloatingVideo = () => {
-  const [isVisible, setIsVisible] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
 
@@ -15,21 +14,27 @@ const FloatingVideo = () => {
     }
   };
 
-  if (!isVisible) return null;
+  const handlePause = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 w-40 h-40 rounded-full overflow-hidden shadow-lg border border-gray-600 bg-black">
+    <div className="fixed bottom-5 right-5 z-50 w-40 h-60 overflow-hidden shadow-lg border border-gray-600 bg-black group">
       <div className="relative w-full h-full">
         <video
           ref={videoRef}
-          className="w-full h-full object-cover rounded-full"
+          className="w-full h-full object-cover scale-[1.2] transition-transform duration-300"
           loop
-          controls
+          playsInline
         >
           <source src="/screen-capture.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
+        {/* Show play button only when not playing */}
         {!isPlaying && (
           <button
             onClick={handlePlay}
@@ -39,12 +44,15 @@ const FloatingVideo = () => {
           </button>
         )}
 
-        <button
-          onClick={() => setIsVisible(false)}
-          className="absolute -top-2 -right-2 bg-white text-black rounded-full p-1 hover:bg-red-600 hover:text-white transition text-xs"
-        >
-          <X size={14} />
-        </button>
+        {/* Show pause button only when playing and hovered */}
+        {isPlaying && (
+          <button
+            onClick={handlePause}
+            className="absolute inset-0 hidden group-hover:flex items-center justify-center bg-black/30 hover:bg-black/60 transition"
+          >
+            <Pause size={20} className="text-white" />
+          </button>
+        )}
       </div>
     </div>
   );
